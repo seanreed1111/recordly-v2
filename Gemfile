@@ -1,5 +1,27 @@
 source 'https://rubygems.org'
 
+#!!!!!!!! in group test, add gem "capybara-webkit" for js testing
+
+################################
+# #also do this when you have internet
+# spec/support/factory_girl.rb
+# RSpec.configure do |config|
+#   config.include FactoryGirl::Syntax::Methods
+
+#   config.before(:suite) do
+#     begin
+#       DatabaseCleaner.start
+#       FactoryGirl.lint
+#     ensure
+#       DatabaseCleaner.clean
+#     end
+#   end
+# end
+###########################
+
+Excerpt From: Josh Steiner. “Testing Rails.” iBooks. 
+
+
 ruby '2.2.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -36,6 +58,9 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
+  #gem "shoulda-matchers" include this gem when you have good internet
+ ##gem "database_cleaner" include this gem when you have good internet
+###gem "capybara-webkit" include this gem when you have good internet
   gem 'selenium-webdriver' #this uses firefox. find out what other drivers are available for use with Capybara
 end
 
