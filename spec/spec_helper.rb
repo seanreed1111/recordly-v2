@@ -16,6 +16,9 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -31,25 +34,7 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
-  Capybara::Webkit.configure do |config|
-  # Enable debug mode. Prints a log of everything the driver is doing.
-    config.debug = true
-
-    # By default, requests to outside domains (anything besides localhost) will
-    # result in a warning. Several methods allow you to change this behavior.
-
-    # Silently return an empty 200 response for any requests to unknown URLs.
-    config.allow_unknown_urls
-
-    # Timeout if requests take longer than 5 seconds
-    config.timeout = 5
-
-    # Don't raise errors when SSL certificates can't be validated
-    config.ignore_ssl_errors
-
-    # Don't load images
-    config.skip_image_loading
-  end
+  
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|

@@ -21,6 +21,11 @@ module DbcRecordly
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.generators do |g|
+      g.hidden_namespaces << "test_unit"
+      g.test_framework :rspec, fixture: false
+      g.fixture_replacement :factory_girl
+    end
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

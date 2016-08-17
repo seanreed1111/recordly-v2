@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'guard'
   gem 'guard-rspec' #must then run 
   # bundle exec guard init rspec" from command line
   # then bundle exec guard
@@ -35,10 +36,10 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'launchy'
   gem "shoulda-matchers"
   gem "database_cleaner"
   gem "capybara-webkit" 
+  gem "poltergeist"
 end
 
 group :development do
