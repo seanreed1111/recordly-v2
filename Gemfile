@@ -11,6 +11,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+# DO I NEED TO RE-ADD gem COFFEE-RAILS??
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
