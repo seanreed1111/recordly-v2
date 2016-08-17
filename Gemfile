@@ -38,7 +38,7 @@ group :test do
   gem 'capybara'
   gem "shoulda-matchers"
   gem "database_cleaner"
-  gem "capybara-webkit" 
+  #gem "capybara-webkit" 
   gem "poltergeist"
 end
 

@@ -54,9 +54,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.1.0)
-      capybara (~> 2.0, >= 2.0.2)
-      json
     cliver (0.3.2)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
@@ -273,7 +270,6 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   capybara
-  capybara-webkit
   database_cleaner
   devise
   factory_girl_rails
