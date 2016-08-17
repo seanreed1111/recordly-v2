@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Album, type: :model do
-  it "is invalid without a name"
-  it "can add a new valid song"
-  
-  describe "invalid valid songs" do
-    context "cannot add two songs with same name" do
+
+  describe "Validations" do
+    it {should validate_presence_of(:name)}
+    it "cannot add two songs with same name" do
     end
   end
 end
+
+#  it "does not allow duplication of album name for a User
+#, given artist name"
