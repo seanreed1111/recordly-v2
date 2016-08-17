@@ -5,11 +5,12 @@ FactoryGirl.define do
     sequence(:email) {|n| "example#{n}@example.com"}
     password "password"
     password_confirmation "password"
+
   end
 
   factory :album do
     name FFaker::Music.album
-    artist
+    artist nil
     sequence(:id) {|id|id}
   end
 
@@ -20,16 +21,14 @@ FactoryGirl.define do
 
   factory :song do
     name FFaker::Music.song
-    album
+    album nil
     sequence(:id) {|id|id}
   end
 
   factory :favorite  do
-    user
+    user nil
     favoritable_id  1
     favoritable_type "type"
   end
-    
-  end
-
 end
+
