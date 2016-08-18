@@ -6,8 +6,6 @@ class Album < ActiveRecord::Base
   validates :name, uniqueness: {scope: :artist_id,
     message: "only one album of same name per artist"}
 
-
-
   accepts_nested_attributes_for :artist
 
   has_many :songs
