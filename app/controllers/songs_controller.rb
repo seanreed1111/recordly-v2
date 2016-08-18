@@ -10,6 +10,7 @@ class SongsController < ApplicationController
 
 
   def show
+    @album = @song.album
   end
 
 
@@ -71,6 +72,8 @@ class SongsController < ApplicationController
 end
 
 #Song Routes
+#  songs          GET    /songs(.:format)                           songs#index
+#  song           GET    /songs/:id(.:format)                       songs#show
 #  album_songs    POST   /albums/:album_id/songs(.:format)          songs#create
 #  new_album_song GET    /albums/:album_id/songs/new(.:format)      songs#new
 # edit_album_song GET    /albums/:album_id/songs/:id/edit(.:format) songs#edit

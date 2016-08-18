@@ -7,16 +7,19 @@ class AlbumsController < ApplicationController
   end
 
   def show
+    @songs = @album.songs
   end
 
 
+  def edit
+    @songs = @album.songs
+  end
+  
   def new
     @album = @user.albums.new
   end
 
 
-  def edit
-  end
 
 
   def create

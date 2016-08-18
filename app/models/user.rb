@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :albums
+  has_many :albums, dependent: :destroy
   has_many :songs, through: :albums
 
-  has_many :favorites, inverse_of: :user
+  has_many :favorites, inverse_of: :user, dependent: :destroy
 
   has_many :favorited_albums, through: :favorites,
             source: :favoritable, source_type: 'Album'

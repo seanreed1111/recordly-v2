@@ -1,15 +1,36 @@
 class ArtistsController < ApplicationController
   before_action :set_user
-  before_action :set_album, only: [:new, :create, :destroy]
+  before_action :set_album, only: [:show, :new, :create, :destroy]
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
+
+# What do I need this controller to do?? 
+# list all of a user's artists in the index
+# show a single artist, with a list of the artist's albums
+# make a new artist and associate them with an album
+# update the artist associated with a given album
+# update the artist's internal properties, e.g. name
+# destroy the artist object and nullify all connections to it 
+
+
+#
+#
+#
+#
+#
   # GET /artists
   def index
-    @artists = Artist.all
+    @artists = @user.artists
   end
 
   # GET /artists/1
   def show
+    @albums = @artist.albums
+  end
+
+  # GET /artists/1/edit
+  def edit
+    @albums = @artist.albums
   end
 
   # GET /artists/new
@@ -17,20 +38,21 @@ class ArtistsController < ApplicationController
     @artist = Artist.new
   end
 
-  # GET /artists/1/edit
-  def edit
-  end
-
   # POST /artists
   def create
     @artist = Artist.new(artist_params)
 
     if @artist.save
+      @album.update(artist_id: @artist.id)
       redirect_to @artist, notice: 'Artist was successfully created.'
     else
-      render :new
+      render :new, alert: "Artist was not created"
     end
   end
+
+
+
+
 
   # PATCH/PUT /artists/1
   def update
@@ -43,8 +65,11 @@ class ArtistsController < ApplicationController
 
   # DELETE /artists/1
   def destroy
-    @artist.destroy
-    redirect_to artists_url, notice: 'Artist was successfully destroyed.'
+    if (@artist.destroy)
+      redirect_to artists_url, notice: 'Artist was successfully destroyed.'
+    else
+
+    end
   end
 
   private
@@ -70,10 +95,12 @@ end
 
 #          artists      GET    /artists(.:format)                         artists#index
 #      edit_artist      GET    /artists/:id/edit(.:format)                artists#edit
-#           artist      GET    /artists/:id(.:format)                     artists#show
 #                       PATCH  /artists/:id(.:format)                     artists#update
 #                       PUT    /artists/:id(.:format)                     artists#update
-#    album_artists      POST   /albums/:album_id/artists(.:format)        artists#create
+#           artist      GET    /artists/:id(.:format)                     artists#show
+
 # new_album_artist      GET    /albums/:album_id/artists/new(.:format)    artists#new
+#    album_artists      POST   /albums/:album_id/artists(.:format)        artists#create
+
 #     album_artist      DELETE /albums/:album_id/artists/:id(.:format)    artists#destroy
 

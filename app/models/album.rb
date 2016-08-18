@@ -8,7 +8,7 @@ class Album < ActiveRecord::Base
 
   accepts_nested_attributes_for :artist
 
-  has_many :songs
+  has_many :songs, dependent: :destroy
   accepts_nested_attributes_for :songs
 
   has_many :favorites, as: :favoritable #polymorphic
