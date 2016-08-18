@@ -8,22 +8,23 @@ FactoryGirl.define do
 
   end
 
-  factory :album do
-    name FFaker::Music.album
-    artist nil
-    sequence(:id) {|id|id}
-  end
+  # factory :album do
+  #   name FFaker::Music.album
+  #   artist nil
+  #   sequence(:id) {|id|id}
+  #   song nil
+  # end
 
   factory :artist do
     name FFaker::Music.artist
     sequence(:id) {|id|id}
   end
 
-  factory :song do
-    name FFaker::Music.song
-    album nil
-    sequence(:id) {|id|id}
-  end
+  # factory :song do
+  #   name FFaker::Music.song
+  #   album_id nil
+  #   sequence(:id) {|id|id}
+  # end
 
   factory :favorite  do
     user nil
