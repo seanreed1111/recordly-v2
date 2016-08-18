@@ -1,28 +1,26 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_user
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
-  # GET /albums
   def index
-    @albums = Album.all
+    @albums = @user.albums
   end
 
-  # GET /albums/1
   def show
   end
 
-  # GET /albums/new
+
   def new
-    @album = Album.new
+    @album = @user.albums.new
   end
 
-  # GET /albums/1/edit
+
   def edit
   end
 
-  # POST /albums
+
   def create
-    @album = Album.new(album_params)
+    @album = @user.albums.new(album_params)
 
     if @album.save
       redirect_to @album, notice: 'Album was successfully created.'
@@ -31,7 +29,7 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /albums/1
+
   def update
     if @album.update(album_params)
       redirect_to @album, notice: 'Album was successfully updated.'
@@ -40,13 +38,21 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # DELETE /albums/1
+  #what do I want to happen to the songs and favorites when I 
+  # destroy an album?
+
   def destroy
     @album.destroy
     redirect_to albums_url, notice: 'Album was successfully destroyed.'
   end
 
   private
+
+    def set_user
+      authenticate_user!
+      @user = current_user
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_album
       @album = Album.find(params[:id])
@@ -57,3 +63,15 @@ class AlbumsController < ApplicationController
       params.require(:album).permit(:name)
     end
 end
+
+# routes
+#  albums     GET    /albums(.:format)                          albums#index
+#             POST   /albums(.:format)                          albums#create
+#  new_album  GET    /albums/new(.:format)                      albums#new
+#  edit_album GET    /albums/:id/edit(.:format)                 albums#edit
+#  album      GET    /albums/:id(.:format)                      albums#show
+#             PATCH  /albums/:id(.:format)                      albums#update
+#             PUT    /albums/:id(.:format)                      albums#update
+#             DELETE /albums/:id(.:format)                      albums#destroy
+#  root       GET    /                                          albums#index
+

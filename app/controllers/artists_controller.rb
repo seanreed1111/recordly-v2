@@ -1,5 +1,6 @@
 class ArtistsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_user
+  before_action :set_album, only: [:new, :create, :destroy]
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
   # GET /artists
@@ -49,11 +50,30 @@ class ArtistsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_artist
-      @artist = Artist.find(params[:id])
+      @artist = Artist.find(artist_params[:id])
+    end
+
+    def set_album
+      @album = Album.find(artist_params[:album_id])
+    end
+
+    def set_user
+      authenticate_user!
+      @user = current_user
     end
 
     # Only allow a trusted parameter "white list" through.
     def artist_params
-      params.require(:artist).permit(:name)
+      params.require(:artist).permit(:name, :album_id)
     end
 end
+
+#          artists      GET    /artists(.:format)                         artists#index
+#      edit_artist      GET    /artists/:id/edit(.:format)                artists#edit
+#           artist      GET    /artists/:id(.:format)                     artists#show
+#                       PATCH  /artists/:id(.:format)                     artists#update
+#                       PUT    /artists/:id(.:format)                     artists#update
+#    album_artists      POST   /albums/:album_id/artists(.:format)        artists#create
+# new_album_artist      GET    /albums/:album_id/artists/new(.:format)    artists#new
+#     album_artist      DELETE /albums/:album_id/artists/:id(.:format)    artists#destroy
+

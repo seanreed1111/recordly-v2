@@ -1,28 +1,29 @@
 class SongsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_user
+  before_action :set_album, only: [:new, :create]
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
-  # GET /songs
+
   def index
-    @songs = Song.all
+    @songs = @user.songs
   end
 
-  # GET /songs/1
+
   def show
   end
 
-  # GET /songs/new
+
   def new
-    @song = Song.new
+    @song = @album.songs.new
   end
 
-  # GET /songs/1/edit
+
   def edit
   end
 
-  # POST /songs
+
   def create
-    @song = Song.new(song_params)
+    @song = @album.songs.new(song_params)
 
     if @song.save
       redirect_to @song, notice: 'Song was successfully created.'
@@ -31,7 +32,7 @@ class SongsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /songs/1
+
   def update
     if @song.update(song_params)
       redirect_to @song, notice: 'Song was successfully updated.'
@@ -40,16 +41,27 @@ class SongsController < ApplicationController
     end
   end
 
-  # DELETE /songs/1
+
   def destroy
     @song.destroy
     redirect_to songs_url, notice: 'Song was successfully destroyed.'
   end
 
   private
+
+    def set_user
+      authenticate_user!
+      @user = current_user
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_album
+      @album = Album.find(song_params[:album_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_song
-      @song = Song.find(params[:id])
+      @song = Song.find(song_params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -57,3 +69,11 @@ class SongsController < ApplicationController
       params.require(:song).permit(:name, :album_id)
     end
 end
+
+#Song Routes
+#  album_songs    POST   /albums/:album_id/songs(.:format)          songs#create
+#  new_album_song GET    /albums/:album_id/songs/new(.:format)      songs#new
+# edit_album_song GET    /albums/:album_id/songs/:id/edit(.:format) songs#edit
+# album_song      PATCH  /albums/:album_id/songs/:id(.:format)      songs#update
+#                 PUT    /albums/:album_id/songs/:id(.:format)      songs#update
+#                 DELETE /albums/:album_id/songs/:id(.:format)      songs#destroy
