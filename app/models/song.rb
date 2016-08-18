@@ -3,7 +3,6 @@ class Song < ActiveRecord::Base
   belongs_to :album
   has_many :favorites, as: :favoritable #polymorphic
 
-  #validates_with SongsHelper::MyValidator
   validates :name, uniqueness: {scope: :album_id,
-    message: "one song of same name per album"}
+    message: "only one song of same name per album"}
 end

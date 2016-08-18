@@ -1,4 +1,5 @@
 class Artist < ActiveRecord::Base
-  belongs_to :album
+  has_many :albums
   has_many :favorites, as: :favoritable #polymorphic
+
 end
