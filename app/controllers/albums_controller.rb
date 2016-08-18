@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_action :set_user
+  before_action :set_user!
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -51,7 +51,7 @@ class AlbumsController < ApplicationController
 
   private
 
-    def set_user
+    def set_user!
       authenticate_user!
       @user = current_user
     end

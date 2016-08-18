@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :set_user
+  before_action :set_user!
   before_action :set_album, only: [:show, :new, :create, :destroy]
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
@@ -82,7 +82,7 @@ class ArtistsController < ApplicationController
       @album = Album.find(artist_params[:album_id])
     end
 
-    def set_user
+    def set_user!
       authenticate_user!
       @user = current_user
     end

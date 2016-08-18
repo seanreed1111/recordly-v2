@@ -18,4 +18,11 @@ class User < ActiveRecord::Base
   has_many :favorited_songs, through: :favorites,
           source: :favoritable, source_type: 'Song'
 
+  ########### ADD YOUR FAVORITE SEARCH FUNCTION HERE!!!!! #################
+  def search(text)
+    [Album.new(name: "Default Album Search Result"),
+    Song.new(name: "Default Song Search Result"), 
+    Artist.new(name: "Default Artist Search Result")]
+  end
+
 end

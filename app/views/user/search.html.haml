@@ -1,0 +1,14 @@
+%h3 
+  Search Results
+  .albums
+    -if @albums.present?
+      =render @albums
+  %br
+  .songs
+    -if @songs.present?
+      =render @songs
+  %br
+  .artists    
+    -if @artists.present?
+      =render @artists
+  %br

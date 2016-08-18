@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user/search'
+
   devise_for :users
 
   resources :artists, only: [:index, :show, :edit, :update]
