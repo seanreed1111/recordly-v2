@@ -25,9 +25,9 @@ class User < ActiveRecord::Base
   #https://github.com/activerecord-hackery/ransack
   
   def search(text)
-    [Album.new(name: "Default Album Search Result"),
-    Song.new(name: "Default Song Search Result"), 
-    Artist.new(name: "Default Artist Search Result")]
+    [Album.new(name: "This is the Default Album Search Result"),
+    Song.new(name: "This is the Default Song Search Result"), 
+    Artist.new(name: "This is the Default Artist Search Result")]
   end
 
   def artists
