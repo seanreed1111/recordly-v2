@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :albums, dependent: :destroy
   has_many :songs, through: :albums
 
+
+
   has_many :favorites, inverse_of: :user, dependent: :destroy
 
   has_many :favorited_albums, through: :favorites,
@@ -19,10 +21,17 @@ class User < ActiveRecord::Base
           source: :favoritable, source_type: 'Song'
 
   ########### ADD YOUR FAVORITE SEARCH FUNCTION HERE!!!!! #################
+  # use ransack https://anadea.info/blog/ultimate-index-pages-by-ransack
+  #https://github.com/activerecord-hackery/ransack
+  
   def search(text)
     [Album.new(name: "Default Album Search Result"),
     Song.new(name: "Default Song Search Result"), 
     Artist.new(name: "Default Artist Search Result")]
+  end
+
+  def artists
+    self.albums.artists if self.albums.present?
   end
 
 end

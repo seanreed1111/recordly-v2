@@ -12,18 +12,26 @@ FactoryGirl.define do
     name FFaker::Music.album
     user nil
     artist nil
-    sequence(:id) {|id|id}
+
+    trait :with_songs do
+      after(:create) do |instance|
+        create_list :song, 2, album: instance
+      end
+    end
   end
 
   factory :song do
     name FFaker::Music.song
     album nil
-    sequence(:id) {|id|id}
   end
   
   factory :artist do
     name FFaker::Music.artist
-    sequence(:id) {|id|id}
+    trait :with_albums do
+      after(:create) do |instance|
+        create_list :album, 2, artist: instance
+      end
+    end
   end
 
 

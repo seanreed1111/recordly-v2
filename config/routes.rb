@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'user/search'
-
+  get 'user/search', to: "user#search", as: "search"
   devise_for :users
 
   resources :artists, only: [:index, :show, :edit, :update]
@@ -11,7 +10,6 @@ Rails.application.routes.draw do
     resources :songs, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  get 'user/search', to: "user#search", as: "search"
   root 'albums#index'
 
   get '*unmatched_route', to: 'application#not_found'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818133245) do
+ActiveRecord::Schema.define(version: 20160819181409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160818133245) do
   end
 
   add_index "albums", ["artist_id"], name: "index_albums_on_artist_id", using: :btree
+  add_index "albums", ["name", "artist_id"], name: "index_albums_on_name_and_artist_id", unique: true, using: :btree
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160818133245) do
     t.datetime "updated_at",       null: false
   end
 
+  add_index "favorites", ["favoritable_id", "favoritable_type"], name: "index_favorites_on_favoritable_id_and_favoritable_type", unique: true, using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "songs", force: :cascade do |t|
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160818133245) do
   end
 
   add_index "songs", ["album_id"], name: "index_songs_on_album_id", using: :btree
+  add_index "songs", ["name", "album_id"], name: "index_songs_on_name_and_album_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
