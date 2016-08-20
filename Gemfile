@@ -17,7 +17,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'ransack', '~> 1.8', '>= 1.8.2' #search
-
+gem 'searchkick', '~> 1.3', '>= 1.3.3' #search. requires $elasticsearch running in background
 gem 'jquery-rails'
 
 # bundle exec rake doc:rails generates the API under doc/api.

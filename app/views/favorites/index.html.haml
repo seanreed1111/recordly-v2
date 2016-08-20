@@ -1,2 +1,14 @@
-%h1 Favorites#index
-%p Find me in app/views/favorites/index.html.haml
+%h2 Here are Your Favorites
+%br
+-if(@albums)
+  -@albums.each do |album|
+    =render 'album', album: album
+  %br
+-if(@artists)
+  -@artists.each do |artist|
+    =render 'artist', artist: album
+  %br
+-if(@songs)
+  -@songs.each do |song|
+    =render 'song', song: song
+  %br

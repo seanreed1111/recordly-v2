@@ -1,0 +1,5 @@
+  .inline-links
+    -if("currently a favorite")
+      = link_to 'Remove From Favorites','#', method: :delete, class: "btn btn-primary btn-sm"
+    -else
+      = link_to 'Add to Favorites','#' method: :post, class: "btn btn-primary btn-sm"
