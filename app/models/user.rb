@@ -7,8 +7,6 @@ class User < ActiveRecord::Base
   has_many :albums, dependent: :destroy
   has_many :songs, through: :albums
 
-
-
   has_many :favorites, inverse_of: :user, dependent: :destroy
 
   has_many :favorited_albums, through: :favorites,
@@ -32,6 +30,10 @@ class User < ActiveRecord::Base
 
   def artists
     self.albums.artists if self.albums.present?
+  end
+
+  def songs
+    self.albums.songs if self.albums.present?
   end
 
 end

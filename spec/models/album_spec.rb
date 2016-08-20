@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Album, type: :model do
 
   describe "Validations" do
-    it {should validate_presence_of(:name)}
+    #it {should validate_presence_of(:name)}
 
     it "should not include duplicate song names on same album on song.create" do
       album = Album.create(name: "MyFirstAlbum")
