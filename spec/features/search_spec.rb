@@ -7,21 +7,20 @@ RSpec.feature "Search function works" do
     login_as(user)
   end
 
+  # scenario "when using default search results" do
+  #   visit "/"
+  #   fill_in "search", with: "blah"
 
-  scenario "when using default search results" do
-    visit "/"
-    fill_in "search", with: "blah"
+  #   click_button "Search"
 
-    click_button "Search"
-
-    expect(page).to have_content("This is the Default")
-  end
+  #   expect(page).to have_content("This is the Default")
+  # end
 
   scenario "when using Ransack to search " do
     visit "/"
     album1 = create(:album, user: user, name: "Mxyzptlk")
     album2 = create(:album, user: user)
-    fill_in "search", with: "Mxyzptlk"
+    fill_in "search", with: "zpt"
 
     click_button "Search"
 
