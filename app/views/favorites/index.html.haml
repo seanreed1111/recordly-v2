@@ -1,14 +1,19 @@
 %h2 Here are Your Favorites
 %br
--if(@albums)
+
+-if(@albums.present?)
   -@albums.each do |album|
-    =render 'album', album: album
+
+    #favorite-album-#{album.id}
+      =render 'album', album: album
   %br
--if(@artists)
+-if(@artists.present?)
   -@artists.each do |artist|
-    =render 'artist', artist: album
+    #favorite-artist-#{artist.id}
+      =render 'artist', artist: album
   %br
--if(@songs)
+-if(@songs.present?)
   -@songs.each do |song|
-    =render 'song', song: song
-  %br
+    #favorite-song-#{song.id}
+      =render 'song', song: song
+%br

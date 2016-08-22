@@ -34,15 +34,15 @@ class User < ActiveRecord::Base
     Artist.new(name: "This is the Default Artist Search Result")]
   end
 
-  #() -> [Artist] or nil
-  def artists
-    self.albums.artists if self.albums.present?
-  end
+  # #() -> [Artist] or nil
+  # def artists
+  #   self.albums.present? ? self.albums.artists : nil 
+  # end
 
-  #() -> [Song] or nil
-  def songs
-    self.albums.songs if self.albums.present?
-  end
+  # #() -> [Song] or nil
+  # def songs
+  #   self.albums.present? ? self.albums.songs : nil
+  # end
 
   # convert this to return a hash instead of an array
   # use keys = [:albums, :artists, :songs]

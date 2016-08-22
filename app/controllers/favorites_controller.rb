@@ -5,14 +5,15 @@ class FavoritesController < ApplicationController
   def index
     @albums = @user.favorited_albums
     @artists = @user.favorited_artists
-    @songs = @user.favorited_songs    
+    @songs = @user.favorited_songs
+    binding.pry ########################
   end
 
   def create
     if @favorite.save
-      redirect_to '#', notice: 'Favorite has been added'
+      redirect_to favorites_index, notice: 'Favorite has been added'
     else
-      redirect_to '#', notice: 'Errors prevented creation of favorite.'
+      redirect_to favorites_index, alert: 'Errors prevented creation of favorite.'
     end
   end
 
@@ -20,7 +21,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(favorite_params[:id])
 
     if @favorite.destroy
-      redirect_to '#', notice: 'Favorite has been removed' ######CHANGE THIS REDIRECT
+      redirect_to favorites_index, notice: 'Favorite has been removed'
     end
   end
 
