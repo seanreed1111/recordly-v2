@@ -53,4 +53,5 @@ class User < ActiveRecord::Base
     result =[self.favorited_albums, self.favorited_artists, self.favorited_songs] 
   end
 
+
 end

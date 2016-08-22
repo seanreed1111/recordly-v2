@@ -1,11 +1,12 @@
 require 'rails_helper'
 
-RSpec.feature "Signed-in users can sign out" do
+RSpec.feature "Search function works" do
   let!(:user) {FactoryGirl.create(:user)}
 
   before do
     login_as(user)
   end
+
 
   scenario "when using default search results" do
     visit "/"
@@ -27,7 +28,6 @@ RSpec.feature "Signed-in users can sign out" do
     expect(page).to have_content("Mxyzptlk")
     expect(page).not_to have_content(album2.name)
   end
-
 
 
 end

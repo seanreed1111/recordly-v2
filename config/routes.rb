@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :songs, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  get 'user/search', to: "user#search", as: "search"
+  get 'user/search', to: "user#ransack_search", as: "search"
   devise_for :users
   root 'albums#index'
   get '*unmatched_route', to: 'application#not_found'

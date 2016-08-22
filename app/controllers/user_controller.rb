@@ -9,6 +9,13 @@ class UserController < ApplicationController
     @artists = results[2]
   end
 
+  def ransack_search
+    @q = Album.ransack(name_cont: params[:search])
+    @albums = @q.result
+
+    render 'search'
+  end
+
   private
 
   def set_user!
@@ -19,4 +26,5 @@ class UserController < ApplicationController
   def search_params
     params[:search]
   end
+
 end
