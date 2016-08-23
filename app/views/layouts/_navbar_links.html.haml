@@ -1,6 +1,8 @@
 #bs-example-navbar-collapse-1.collapse.navbar-collapse
-  %ul.nav.navbar-nav
-    %li{:class => 'active' }= link_to 'Your Albums', albums_path
-    %li{:class => 'inactive' }= link_to 'Your Artists', artists_path
-    %li{:class => 'inactive'}= link_to 'Your Songs', songs_path
-    %li{:class => 'inactive'}= link_to 'Show Favorites', favorites_index_path
+  %ul.nav.navbar-nav.navbar-right
+    %li= link_to 'Add New Album', new_album_path, id:"add-new-album"
+    %li= link_to 'Show Albums', albums_path, id: "show-albums"
+    %li= link_to 'Show Artists', artists_path, id: "show-artists"
+    %li= link_to 'Show Songs', songs_path, id: "show-songs"
+    %li= link_to 'Favorites', favorites_index_path, id: "show-favorites"
+

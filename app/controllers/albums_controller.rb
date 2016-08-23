@@ -11,31 +11,29 @@ class AlbumsController < ApplicationController
   end
 
 
-  def edit
-    @songs = @album.songs
-  end
-  
   def new
     @album = @user.albums.new
   end
-
-
-
 
   def create
     @album = @user.albums.new(album_params)
 
     if @album.save
-      redirect_to @album, notice: 'Album was successfully created.'
+      redirect_to albums_path, notice: 'Album was successfully created.'
     else
       render :new
     end
   end
 
 
+  def edit
+    @songs = @album.songs
+  end
+  
+
   def update
     if @album.update(album_params)
-      redirect_to @album, notice: 'Album was successfully updated.'
+      redirect_to albums_path, notice: 'Album was successfully updated.'
     else
       render :edit
     end

@@ -17,20 +17,20 @@ RSpec.feature describe "add favorite programmatically" do
     end
     scenario "Album" do
       favorite = create(:favorite, user: user, favoritable_id: album.id, favoritable_type:"Album" )
-      click_link "Show Favorites"
+      find("#show-favorites").click
       expect(page).to have_css("#favorite-album-#{album.id}")
     end
 
     scenario "Song" do
       favorite = create(:favorite, user: user, favoritable_id: song.id, favoritable_type:"Song" )
-      click_link "Show Favorites"
+      find("#show-favorites").click
 
       expect(page).to have_css("#favorite-song-#{song.id}")    
     end
 
     scenario "Artist" do
       favorite = create(:favorite, user: user, favoritable_id: artist.id, favoritable_type:"Artist" )
-      click_link "Show Favorites"
+      find("#show-favorites").click
       expect(page).to have_css("#favorite-artist-#{artist.id}")      
     end
 
