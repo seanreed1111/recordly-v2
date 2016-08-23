@@ -1,16 +1,17 @@
 require "rails_helper"
 
-RSpec.feature describe "add favorite " do
-  let!(:user) {create(:user)}
-  let!(:artist) {create(:artist)}
-  let!(:album) {create(:album, user: user, artist: artist)}
-  let!(:song) {create(:song, album: album)}
+RSpec.feature describe "add favorite programmatically" do
+  let(:user) {create(:user)}
+  let(:artist) {create(:artist)}
+  let(:album) {create(:album, user: user, artist: artist)}
+  let(:song) {create(:song, album: album)}
 
   before do
     login_as(user)
   end
 
-  describe "via clicking a link on the home page for" do
+
+  describe "via clicking a link on the home page for:" do
     before do
       visit "/"     
     end

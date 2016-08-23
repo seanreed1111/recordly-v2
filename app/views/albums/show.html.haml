@@ -1,9 +1,9 @@
-%p#notice= notice
-
-%p
-  %b Name:
+.album{id: "album-#{@album.id}"}
+  Name:
   = @album.name
 
-= link_to 'Edit', edit_album_path(@album)
-\|
-= link_to 'Back', albums_path
+  = link_to 'Edit', edit_album_path(@album)
+  \|
+  =link_to 'Add to Album Favorites', album_favorites_path(@album), method: :post, id:"link-to-favorites"
+  \|
+  = link_to 'Back to Albums', albums_path

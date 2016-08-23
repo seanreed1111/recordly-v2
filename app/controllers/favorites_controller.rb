@@ -10,9 +10,9 @@ class FavoritesController < ApplicationController
 
   def create
     if @favorite.save
-      redirect_to favorites_index, notice: 'Favorite has been added'
+      redirect_to favorites_index_path, notice: 'Favorite has been added'
     else
-      redirect_to favorites_index, alert: 'Errors prevented creation of favorite.'
+      redirect_to favorites_index_path, alert: 'Errors prevented creation of favorite.'
     end
   end
 
@@ -20,7 +20,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(favorite_params[:id])
 
     if @favorite.destroy
-      redirect_to favorites_index, notice: 'Favorite has been removed'
+      redirect_to favorites_index_path, notice: 'Favorite has been removed'
     end
   end
 

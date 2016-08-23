@@ -2,15 +2,15 @@
   %br
   -if(@albums.present?)
     -@albums.each do |album|
-      =render 'albums/album', album: album
+      =render 'favorites/album', album: album
     %br
   -if(@artists.present?)
     -@artists.each do |artist|
-      =render 'artists/artist', artist: artist
+      =render 'favorites/artist', artist: artist
     %br
   -if(@songs.present?)
     -@songs.each do |song|
-      =render 'songs/song', song: song
+      =render 'favorites/song', song: song
     %br
 -else
   %h2 You Don't Have Any Favorites Yet!

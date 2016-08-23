@@ -8,7 +8,7 @@ FactoryGirl.define do
   end
 
   factory :album do
-    name FFaker::Music.album
+    name "ThisisMyAlbum"
     user nil
     artist nil
 
@@ -20,7 +20,7 @@ FactoryGirl.define do
   end
 
   factory :song do
-    name FFaker::Music.song
+    sequence(:name) {|n| "This is Song #{n}"}
     album nil
   end
   
