@@ -1,16 +1,14 @@
 require "rails_helper"
 
 RSpec.feature describe "add favorite " do
-  let(:user) {create(:user)}
-  let(:artist) {create(:artist)}
-  let(:album) {create(:album, user: user, artist: artist)}
-  let(:song) {create(:song, album: album)}
+  let!(:user) {create(:user)}
+  let!(:artist) {create(:artist)}
+  let!(:album) {create(:album, user: user, artist: artist)}
+  let!(:song) {create(:song, album: album)}
 
   before do
     login_as(user)
   end
-
-
 
   describe "via clicking a link on the home page for" do
     before do
@@ -29,15 +27,14 @@ RSpec.feature describe "add favorite " do
       expect(page).to have_css("#favorite-song-#{song.id}")    
     end
 
-
     scenario "Artist" do
       favorite = create(:favorite, user: user, favoritable_id: artist.id, favoritable_type:"Artist" )
       click_link "Show Favorites"
       expect(page).to have_css("#favorite-artist-#{artist.id}")      
     end
 
-
   end
+
 
   describe "programmatically for:" do
     scenario "Album" do

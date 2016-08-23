@@ -1,19 +1,16 @@
-%h2 Here are Your Favorites
-%br
-
--if(@albums.present?)
-  -@albums.each do |album|
-
-    #favorite-album-#{album.id}
-      =render 'album', album: album
+-if(@albums.present? || @artists.present? || @songs.present?)
   %br
--if(@artists.present?)
-  -@artists.each do |artist|
-    #favorite-artist-#{artist.id}
-      =render 'artist', artist: album
-  %br
--if(@songs.present?)
-  -@songs.each do |song|
-    #favorite-song-#{song.id}
-      =render 'song', song: song
-%br
+  -if(@albums.present?)
+    -@albums.each do |album|
+      =render 'albums/album', album: album
+    %br
+  -if(@artists.present?)
+    -@artists.each do |artist|
+      =render 'artists/artist', artist: artist
+    %br
+  -if(@songs.present?)
+    -@songs.each do |song|
+      =render 'songs/song', song: song
+    %br
+-else
+  %h2 You Don't Have Any Favorites Yet!

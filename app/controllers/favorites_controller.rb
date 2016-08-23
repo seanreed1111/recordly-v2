@@ -6,7 +6,6 @@ class FavoritesController < ApplicationController
     @albums = @user.favorited_albums
     @artists = @user.favorited_artists
     @songs = @user.favorited_songs
-    binding.pry ########################
   end
 
   def create
