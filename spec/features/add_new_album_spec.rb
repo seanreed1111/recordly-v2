@@ -7,6 +7,7 @@ RSpec.feature "add new album" do
     login_as(user)
   end
 
+
   scenario "from albums#index" do
     visit '/albums'
     click_link 'Add New Album'
@@ -16,7 +17,7 @@ RSpec.feature "add new album" do
     expect(page).to have_content "My Awesome Album Name"
   end
 
-  scenario "from menu on home page" do
+  scenario "from dropdown menu" do
     #from dropdown menu, click Your Albums, then select_option "Add New album"
     click_link 'Add New Album'
     fill_in "Name", with: "Purple Rain"
@@ -24,7 +25,4 @@ RSpec.feature "add new album" do
 
     expect(page).to have_content "Purple Rain"
   end
-
-
-
 end

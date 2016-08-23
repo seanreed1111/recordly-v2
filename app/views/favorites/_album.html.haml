@@ -1,2 +1,4 @@
-%h4=link_to album.name, album_path(album), id: "favorite-album-#{album.id}"
+%h3 Albums
 %br
+%ul
+  %li=link_to "#{album.name} by #{album.artist.present? ? album.artist : "Unknown"}", album_path(album), id: "favorite-album-#{album.id}"  
