@@ -11,6 +11,7 @@ FactoryGirl.define do
     name "ThisisMyAlbum"
     user nil
     artist nil
+    artist_name_field nil
 
     trait :with_songs do
       after(:create) do |instance|
