@@ -6,6 +6,7 @@ class Song < ActiveRecord::Base
   validates :name, uniqueness: {scope: :album_id,
     message: "only one song of same name per album"}
 
+
   def artist
     Artist.where(id: self.album.artist_id) if self.album
   end

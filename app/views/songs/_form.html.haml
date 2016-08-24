@@ -6,17 +6,3 @@
     = f.input :name, label: "Song Name"
   .form-actions
     = f.button :submit, label: "Add Song"
-
-
-
-
-/ This was the original way, to add a song to any album?? / Maybe??
-/ = simple_form_for(@song) do |f|
-/   = f.error_notification
-
-/   .form-inputs
-/     = f.input :name
-/     = f.association :album
-
-/   .form-actions
-/     = f.button :submit

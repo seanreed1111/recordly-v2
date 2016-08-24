@@ -1,5 +1,7 @@
-%h1 Listing songs
+%h3
+  -if @songs.present? 
+    Listing songs 
+    =render @songs
+  -else
+    You don't have any songs yet!
 
-- @songs.each do |song|
-  =song.name
-%br

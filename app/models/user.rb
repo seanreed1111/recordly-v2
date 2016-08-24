@@ -19,21 +19,14 @@ class User < ActiveRecord::Base
   has_many :favorited_songs, through: :favorites,
           source: :favoritable, source_type: 'Song'
 
-# using ransack, each user is only authorized
-# to user results from their owner user id
-#need to add the associations 
-
-  ########### ADD YOUR FAVORITE SEARCH FUNCTION HERE!!!!! #################
-  # use ransack https://anadea.info/blog/ultimate-index-pages-by-ransack
-  #https://github.com/activerecord-hackery/ransack
   
-  # (String) -> [ [Album], [Song], [Artist] ]
+  # Now using Ransack search gem directly from the users_controller
 
-  def search(query)
-    [Album.new(name: "This is the Default Album Search Result"),
-    Song.new(name: "This is the Default Song Search Result"), 
-    Artist.new(name: "This is the Default Artist Search Result")]
-  end
+  # def search(query)
+  #   [Album.new(name: "This is the Default Album Search Result"),
+  #   Song.new(name: "This is the Default Song Search Result"), 
+  #   Artist.new(name: "This is the Default Artist Search Result")]
+  # end
 
   # #() -> [Artist] or nil
   # def artists
