@@ -41,7 +41,10 @@ class AlbumsController < ApplicationController
 
   def destroy
     @album.destroy
-    redirect_to albums_url, notice: 'Album was successfully destroyed.'
+    respond_to do |format|
+      format.html {redirect_to albums_url, notice: 'Album was successfully destroyed.'}
+      format.js
+    end
   end
 
   private

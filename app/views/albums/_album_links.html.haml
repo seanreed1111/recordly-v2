@@ -5,4 +5,4 @@
   =link_to 'Remove From Favorites', album_favorite_path(album,Favorite.favorite_id(@user, album)), method: :delete, id:"remove-from-favorites"
 -else
   =link_to 'Add Album to Favorites', album_favorites_path(album), method: :post, id:"link-to-favorites"
-= link_to 'Delete Album', album, :method => :delete, :data => { :confirm => 'Are you sure? This will also delete associated songs..' }
+= link_to 'Delete Album', album, :method => :delete, :data => { :confirm => 'Are you sure? This will also delete associated songs..' }, remote: true
