@@ -1,8 +1,7 @@
 .album{id: "album-#{@album.id}"}
   %h4= "Album: #{@album.name}"
-  -if @album.artist
-    Artist: #{@album.artist.name}
-
+  %h4= "Artist: #{@album.artist_name_field}" if @album.artist_name_field
+ 
   -if @album.songs.present?
     %h4 Songs
     = render @album.songs

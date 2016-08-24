@@ -3,22 +3,19 @@ class ArtistsController < ApplicationController
   before_action :set_album, only: [:show, :new, :create, :destroy]
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
-  # GET /artists
+
   def index
     @artists = @user.artists
   end
 
-  # GET /artists/1
+
   def show
     @albums = @artist.albums
   end
 
-  # GET /artists/1/edit
-  def edit
-    @albums = @artist.albums
-  end
 
-  # GET /artists/new
+
+
   def new
     @artist = Artist.new
   end
@@ -37,9 +34,11 @@ class ArtistsController < ApplicationController
 
 
 
+  def edit
+    @albums = @artist.albums
+  end
 
 
-  # PATCH/PUT /artists/1
   def update
     if @artist.update(artist_params)
       redirect_to @artist, notice: 'Artist was successfully updated.'
@@ -48,7 +47,7 @@ class ArtistsController < ApplicationController
     end
   end
 
-  # DELETE /artists/1
+
   def destroy
     if (@artist.destroy)
       redirect_to artists_url, notice: 'Artist was successfully destroyed.'

@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
   before_action :set_user!
   before_action :set_album, only: [:show, :edit, :update, :destroy]
+  #after_action :create_artist? only: [:create, :update]
 
   def index
     @albums = @user.albums
@@ -30,12 +31,6 @@ class AlbumsController < ApplicationController
     @songs = @album.songs
   end
   
-
-  ##need to create the artist object if it doesn't already exist. 
-  #Do search among user's artist objects, then go to create artist
-  #controlloer as after-action?? 
-  #push this down into the User or Album model??
-
   def update
     if @album.update(album_params)
       redirect_to albums_path, notice: 'Album was successfully updated.'
@@ -44,9 +39,6 @@ class AlbumsController < ApplicationController
     end
   end
 
-  #what do I want to happen to the songs and favorites when I 
-  # destroy an album?
-
   def destroy
     @album.destroy
     redirect_to albums_url, notice: 'Album was successfully destroyed.'
@@ -54,30 +46,19 @@ class AlbumsController < ApplicationController
 
   private
 
-    def set_user!
-      authenticate_user!
-      @user = current_user
-    end
+  def set_user!
+    authenticate_user!
+    @user = current_user
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_album
-      @album = Album.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_album
+    @album = Album.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def album_params
-      params.require(:album).permit(:name)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def album_params
+    params.require(:album).permit(:name, :artist_name_field)
+  end
 end
-
-# routes
-#  albums     GET    /albums(.:format)                          albums#index
-#             POST   /albums(.:format)                          albums#create
-#  new_album  GET    /albums/new(.:format)                      albums#new
-#  edit_album GET    /albums/:id/edit(.:format)                 albums#edit
-#  album      GET    /albums/:id(.:format)                      albums#show
-#             PATCH  /albums/:id(.:format)                      albums#update
-#             PUT    /albums/:id(.:format)                      albums#update
-#             DELETE /albums/:id(.:format)                      albums#destroy
-#  root       GET    /                                          albums#index
 
