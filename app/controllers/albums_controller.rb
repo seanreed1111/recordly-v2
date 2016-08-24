@@ -31,6 +31,11 @@ class AlbumsController < ApplicationController
   end
   
 
+  ##need to create the artist object if it doesn't already exist. 
+  #Do search among user's artist objects, then go to create artist
+  #controlloer as after-action?? 
+  #push this down into the User or Album model??
+
   def update
     if @album.update(album_params)
       redirect_to albums_path, notice: 'Album was successfully updated.'

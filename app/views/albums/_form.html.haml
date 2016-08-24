@@ -7,6 +7,9 @@
           %li= msg
 
   .field
-    = f.input :name
+    =f.simple_fields_for Artist.new do |ff|
+      =ff.input :name, label: "Artist Name"  #need to create the artist object if it doesn't already exist. Do search among user's artist objects
+    =f.input :name, label: "Album Name"
+
   .actions
     = f.button :submit, 'Save'

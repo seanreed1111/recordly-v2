@@ -11,7 +11,7 @@ RSpec.feature "add new album" do
   scenario "from albums#index" do
     visit '/albums'
     click_link("Add New Album")
-    fill_in "Name", with: "My Awesome Album Name"
+    fill_in "Album Name", with: "My Awesome Album Name"
     click_button "Save"
 
     expect(page).to have_content "My Awesome Album Name"
@@ -20,7 +20,7 @@ RSpec.feature "add new album" do
   scenario "from dropdown menu" do
     visit '/albums'
     click_link("Add New Album")
-    fill_in "Name", with: "Purple Rain"
+    fill_in "Album Name", with: "Purple Rain"
     click_button "Save"
 
     expect(page).to have_content "Purple Rain"

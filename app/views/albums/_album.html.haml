@@ -1,6 +1,3 @@
 .album{id: "album-#{album.id}"}
-  = album.name
-  = link_to 'Show', album
-  = link_to 'Edit', edit_album_path(album)
-  = link_to 'Destroy', album, :method => :delete, :data => { :confirm => 'Are you sure?' }
-%br
+  =album.name
+  =render 'albums/album_links', album: album

@@ -43,17 +43,6 @@ class FavoritesController < ApplicationController
     params.require(:favorite).permit(:id)
   end
 end
-        #  favorites_index GET    /favorites/index(.:format)                  favorites#index
-
-        #  album_favorites POST   /albums/:album_id/favorites(.:format)       favorites#create
-        #   song_favorites POST   /songs/:song_id/favorites(.:format)         favorites#create
-        # artist_favorites POST   /artists/:artist_id/favorites(.:format)     favorites#create
-
-        #  artist_favorite DELETE /artists/:artist_id/favorites/:id(.:format) favorites#destroy
-        #   album_favorite DELETE /albums/:album_id/favorites/:id(.:format)   favorites#destroy
-        #    song_favorite DELETE /songs/:song_id/favorites/:id(.:format)     favorites#destroy
-        
-        #         favorite DELETE /favorites/:id(.:format)                    favorites#destroy
 
 
 

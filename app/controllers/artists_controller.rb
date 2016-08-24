@@ -3,21 +3,6 @@ class ArtistsController < ApplicationController
   before_action :set_album, only: [:show, :new, :create, :destroy]
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
-
-# What do I need this controller to do?? 
-# list all of a user's artists in the index
-# show a single artist, with a list of the artist's albums
-# make a new artist and associate them with an album
-# update the artist associated with a given album
-# update the artist's internal properties, e.g. name
-# destroy the artist object and nullify all connections to it 
-
-
-#
-#
-#
-#
-#
   # GET /artists
   def index
     @artists = @user.artists
@@ -92,15 +77,3 @@ class ArtistsController < ApplicationController
       params.require(:artist).permit(:name, :album_id)
     end
 end
-
-#          artists      GET    /artists(.:format)                         artists#index
-#      edit_artist      GET    /artists/:id/edit(.:format)                artists#edit
-#                       PATCH  /artists/:id(.:format)                     artists#update
-#                       PUT    /artists/:id(.:format)                     artists#update
-#           artist      GET    /artists/:id(.:format)                     artists#show
-
-# new_album_artist      GET    /albums/:album_id/artists/new(.:format)    artists#new
-#    album_artists      POST   /albums/:album_id/artists(.:format)        artists#create
-
-#     album_artist      DELETE /albums/:album_id/artists/:id(.:format)    artists#destroy
-

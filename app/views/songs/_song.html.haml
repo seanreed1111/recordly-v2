@@ -1,1 +1,1 @@
-=content_tag(:h4, "Song #{song.name}", id: "song-#{song.id}")
+=link_to content_tag(:p, "#{song.name}"), song_path(song), id: "song-#{song.id}"

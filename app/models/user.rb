@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :albums, dependent: :destroy
   has_many :songs, through: :albums
+  has_many :artists, through: :albums
 
   has_many :favorites, inverse_of: :user, dependent: :destroy
 

@@ -1,9 +1,10 @@
 .album{id: "album-#{@album.id}"}
-  Name:
-  = @album.name
+  %h4= "Album: #{@album.name}"
+  -if @album.artist
+    Artist: #{@album.artist.name}
 
-  = link_to 'Edit', edit_album_path(@album)
-  \|
-  =link_to 'Add to Album Favorites', album_favorites_path(@album), method: :post, id:"link-to-favorites"
-  \|
-  = link_to 'Back to Albums', albums_path
+  -if @album.songs.present?
+    %h4 Songs
+    = render @album.songs
+
+  =render "album_links", album: @album

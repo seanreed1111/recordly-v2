@@ -1,21 +1,8 @@
-%h1 Listing artists
+-if(@artists.present?)
+  %h3 Listing artists
+  =render @artists
+-else
+  %h3 You don't have any artists yet! Add an artist to one of your albums.
+  =link_to "Show My Albums", albums_path
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
 
-  %tbody
-    - @artists.each do |artist|
-      %tr
-        %td= artist.name
-        %td= link_to 'Show', artist
-        %td= link_to 'Edit', edit_artist_path(artist)
-        %td= link_to 'Destroy', artist, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Artist', new_artist_path

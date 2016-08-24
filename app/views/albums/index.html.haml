@@ -1,5 +1,7 @@
-%h1 Listing albums
-
 -if(@albums.present?)
+  %h3 Listing albums
   =render @albums
+-else
+  %h3=link_to "You Don't Have Any Albums Yet! Add Some Now..", new_album_path
 %br
+
