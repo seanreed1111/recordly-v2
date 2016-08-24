@@ -1,0 +1,4 @@
+var $form = $("<%= j render(file: 'albums/_form.html.haml') %>");
+$('#main_container').slideUp("slow", function(){
+  $(this).html($form).slideDown("slow");
+});

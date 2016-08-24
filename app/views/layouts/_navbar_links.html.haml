@@ -1,6 +1,6 @@
 #bs-example-navbar-collapse-1.collapse.navbar-collapse
   %ul.nav.navbar-nav.navbar-right
-    %li= link_to 'Add New Album', new_album_path, id:"add-new-album"
+    %li= link_to 'Add New Album', new_album_path, id:"add-new-album", remote: true
     %li= link_to 'Show Albums', albums_path, id: "show-albums"
     %li= link_to 'Show Artists', artists_path, id: "show-artists"
     %li= link_to 'Show Songs', songs_path, id: "show-songs"
